@@ -10,14 +10,15 @@ source:
   sha256: 07a0609ce053c8c2675037e6d5242899f90ecfb5262e1d0b2d7264fe8814099c
 
 build:
-  number: 0
-  script: python setup.py install --single-version-externally-managed --record=record.txt
+  number: 1
+  script: python setup.py bdist_wheel --universal;python -m wheel install --force dist/*.whl
   noarch: python
 
 requirements:
   build:
     - python
     - setuptools
+    - wheel
 
   run:
     - python
