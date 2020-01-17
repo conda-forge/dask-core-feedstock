@@ -10,7 +10,7 @@ source:
   sha256: 214ffd3bb818827061deb5b3bc9bd425ee9d2fab6374d076acdd4c01e4b2f79f
 
 build:
-  number: 0
+  number: 1
   script: {{ PYTHON }} -m pip install . --no-deps -vv
   noarch: python
 
@@ -25,6 +25,40 @@ requirements:
 test:
   imports:
     - dask
+
+outputs:
+  - name: dask-core
+
+  - name: dask
+    build:
+      noarch: python
+    requirements:
+      host:
+        - python >=3.6
+      run:
+        - python >=3.6
+        - bokeh >=1.0.0
+        - cloudpickle >=0.2.1
+        - cytoolz >=0.7.3
+        - dask-core =={{ version }}
+        - distributed >={{ version }}
+        - fsspec >=0.6.0
+        - numpy >=1.13.0
+        - pandas >=0.21.0
+        - partd >=0.3.10
+        - toolz >=0.7.3
+    test:
+      imports:
+        - dask
+        - dask.array
+        - dask.bag
+        - dask.bytes
+        - dask.dataframe
+        - dask.dataframe.tseries
+        - dask.delayed
+        - dask.diagnostics
+        - dask.distributed
+        - distributed
 
 about:
   home: http://github.com/dask/dask/
