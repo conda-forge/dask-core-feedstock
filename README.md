@@ -7,7 +7,7 @@ Home: https://github.com/dask/dask/
 
 Package license: BSD-3-Clause
 
-Summary: Parallel Python with task scheduling
+Summary: Parallel PyData with Task Scheduling
 
 Development: https://github.com/dask/dask
 
@@ -157,7 +157,4 @@ Feedstock Maintainers
 * [@shoyer](https://github.com/shoyer/)
 * [@sinhrks](https://github.com/sinhrks/)
 * [@tomaugspurger](https://github.com/tomaugspurger/)
-
-
-<!-- dummy commit to enable rerendering -->
 
