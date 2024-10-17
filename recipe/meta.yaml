@@ -20,6 +20,7 @@ requirements:
   host:
     - python >=3.10
     - pip
+    - setuptools
     - versioneer =0.29
     - tomli
 
