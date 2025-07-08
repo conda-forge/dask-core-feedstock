@@ -1,0 +1,79 @@
+schema_version: 1
+
+context:
+  version: 2025.5.1
+  python_min: 3.10
+
+package:
+  name: dask-core
+  version: ${{ version }}
+
+source:
+  url: https://pypi.org/packages/source/d/dask/dask-${{ version }}.tar.gz
+  sha256: 979d9536549de0e463f4cab8a8c66c3a2ef55791cd740d07d9bf58fab1d1076a
+
+build:
+  number: 1
+  noarch: python
+  script: ${{ PYTHON }} -m pip install . -vv
+  python:
+    entry_points:
+      - dask = dask.__main__:main
+
+requirements:
+  host:
+    - python ${{ python_min }}.*
+    - pip
+    - setuptools
+    - versioneer =0.29
+    - tomli
+  run:
+    - python >=${{ python_min }}
+    - click >=8.1
+    - cloudpickle >=3.0.0
+    - fsspec >=2021.09.0
+    - packaging >=20.0
+    - partd >=1.4.0
+    - pyyaml >=5.3.1
+    - toolz >=0.10.0
+    - importlib-metadata >=4.13.0
+
+tests:
+  - python:
+      imports:
+        - dask
+      pip_check: true
+      python_version: ${{ python_min }}.*
+  - requirements:
+      run:
+        - python ${{ python_min }}.*
+        - pip
+    script:
+      - dask --help
+      - dask docs --help
+      - dask info --help
+      - dask info versions --help
+
+about:
+  summary: Parallel PyData with Task Scheduling
+  license: BSD-3-Clause
+  license_file:
+    - LICENSE.txt
+    - dask/array/NUMPY_LICENSE.txt
+  homepage: https://github.com/dask/dask/
+  repository: https://github.com/dask/dask
+  documentation: https://dask.org/
+
+extra:
+  recipe-maintainers:
+    - jakirkham
+    - jcrist
+    - martindurant
+    - mrocklin
+    - pitrou
+    - shoyer
+    - sinhrks
+    - tomaugspurger
+    - jrbourbeau
+    - charlesbluca
+    - fjetter
