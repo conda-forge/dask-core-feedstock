@@ -24,8 +24,8 @@ requirements:
   host:
     - python ${{ python_min }}.*
     - pip
-    - setuptools
-    - versioneer =0.29
+    - setuptools >=80
+    - setuptools-scm
     - tomli
   run:
     - python >=${{ python_min }}
